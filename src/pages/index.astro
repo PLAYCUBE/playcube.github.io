@@ -1,0 +1,426 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Features from '~/components/widgets/Features.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+import { headerData } from '~/navigation';
+import { Image } from 'astro:assets';
+import waterTreatment from '../assets/images/water-treatment.png';
+import cubeAnimation from '../assets/images/cube-animation.gif';
+
+import FAQs from '~/components/widgets/FAQs.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+import { YouTube } from 'astro-embed';
+
+
+/*const metadata = {
+  title: 'SaaS Landing Page',
+};*/
+
+
+const { metadata } = Astro.props;
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="header">
+    <Header
+      {...headerData}
+      actions={[
+        {
+          variant: 'primary',
+          text: 'Get in touch',
+          href: '#form',
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+  
+
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero2
+    actions={[
+      { variant: 'primary', text: 'Get in touch', href: '#contact' },
+      { text: 'Learn more', href: '#projects' },
+    ]}
+    image={{
+      src: '~/assets/images/hero-image-2.png',
+      alt: 'AstroWind Hero Image',
+    }}
+  >
+    <Fragment slot="title">
+      Engineering Excellence with <span class="text-accent dark:text-white highlight"
+      >Digital Twins</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        Drive innovation in your projects with <span class="font-semibold">Digital Twin and CAD services</span>. Leverage Industry 4.0 automation to enhance efficiency and accuracy in all engineering endeavors.</span>
+    </Fragment>
+    
+  </Hero2>
+
+  
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    id="hero"
+    title="Simon Rochlin"
+    actions={[{ variant: 'primary', text: 'Get in touch', href: getPermalink('/contact#form') }]}
+  >
+    <Fragment slot="subtitle">
+      As a mechanical engineer, software developer, and digital twin specialist, I bring a wealth of experience from both corporate and start-up roles.
+      My passion lies in leading organizations through digital transformation, using digital twins to innovate and optimize operations.
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+    </Fragment>
+  </Hero>
+
+   <!-- Content Widget **************** -->
+
+   <Content
+   id="about"
+   columns={1}
+   isReversed
+   items={[
+     {
+       icon: 'tabler:brand-linkedin',
+       callToAction: {
+         target: '_blank',
+         text: 'LinkedIn',
+         href: 'https://www.linkedin.com/in/simon-rochlin-5a391010a/',
+       },
+     },
+   ]}
+   image={{
+     src: '~/assets/images/profile-pic.png',
+     alt: 'Profile Picture',
+     loading: 'eager',
+   }}
+ >
+   <Fragment slot="content">
+     <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
+     <p>
+      Welcome to my world of engineering innovation. My work is a testament to my passion for transforming concepts into reality,
+      where each calculation and code line contributes to the digital tapestry of the future.
+     </p>
+     <br />
+     <p>
+      I find inspiration in the seamless integration of technology and engineering, whether it's the challenge of refining a mechanical design,
+      the elegance of a software algorithm, or the potential of digital transformation in today's industries.
+     </p>
+     <br />
+     <p>Curious to learn more about my work? Let's connect and explore the future together:
+     </p>
+   </Fragment>
+
+   <Fragment slot="bg">
+     <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+   </Fragment>
+ </Content>
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="resume"
+    title="Education"
+    items={[
+      {
+        title: `Mechanical Engineer, M. Sc.<br /> <span class="font-normal">Nuremberg Institute of Technology Georg Simon Ohm</span> <br /> <span class="text-sm font-normal">2021 - 2024</span>`,
+        icon: 'tabler:school',
+      },
+      {
+        title: `Mechanical Engineer, B. Eng.<br /> <span class="font-normal">Karlsruhe University of Applied Sciences</span> <br /> <span class="text-sm font-normal">2016 - 2020</span>`,
+        icon: 'tabler:school',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    id="skills"
+    title="Skills"
+    subtitle="Uncover the expertise behind creating impactful and advanced solutions."
+    columns={3}
+    defaultIcon="tabler:point-filled"
+    items={[
+      {
+        title: 'Digital twin development',
+        description: 'Specializing in developing digital twins for process simulation, automation, and virtual commissioning.',
+      },
+      {
+        title: 'Computer-aided design',
+        description: 'Skilled in 3D modeling and parametric design, with extensive experience in producing precise and innovative engineering solutions.',
+      },
+      {
+        title: 'Programming',
+        description: 'Proficient in various programming languages, focusing on creating seamless user experiences and robust full-stack applications.',
+      },
+      {
+        title: 'AR/VR application development',
+        description: 'Expert in developing immersive augmented and virtual reality applications for enhanced product configurators and simulations.',
+      },
+      {
+        title: 'Automation and simulation',
+        description: 'Advanced in automating processes and utilizing digital twins to enhance workflow efficiency and virtual commissioning.',
+      },
+      {
+        title: 'Product configurator development',
+        description: 'Expert in designing interactive, user-friendly product configurators that enhance customer engagement and personalization.',
+      }
+    ]}
+  />
+
+
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="projects"
+    title="Past projects and other initiatives"
+    subtitle="Discover a range of my engineering solutions, cutting-edge developments, and contributions to digital transformation, including digital twin use cases."
+    items={[
+      {
+        title: 'Description:',
+        description:
+          'A fire truck manufacturer aimed to create an AR configurator for their safety basket. The tool used a 3D model "target" for precise recognition and tracking, overlaying virtual configurations onto the real basket. This allowed the manufacturer to showcase various configuration options at trade shows without transporting additional components.',
+      },
+      {
+        title: 'Benefits:',
+        description: `The AR configurator provided accurate recognition and tracking, allowing the manufacturer to showcase multiple safety basket configurations with ease. This reduced logistical challenges and costs while offering a highly engaging and interactive tool for product demonstrations, boosting interest and enhancing trade show presentations.`,
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Blending realities: <br /><span class="text-2xl">A product configurator using augmented reality</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="image">
+        <YouTube id="Ct9sRCEiUUU" title="Demonstration of a fire truck safety basket configurator in augmented reality*"/>
+      <style is:inline>
+        lite-youtube {
+          margin: 0 auto;
+          max-width: 100%;
+        }
+      </style>
+      <p style="font-size: 14px">*The names and logos of the companies mentioned above are trademarks of their respective owners. These were part of past project work and are not intended to imply any current connection or association with me personally.</p>      
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: `In the field of simulation, particularly with Digital Twins, the challenge lies in accurately modeling phenomena as individual simulation components. This is especially difficult due to the relatively recent development of this area, leading to a lack of domain-specific simulation components that must first be created. This was the case in water treatment, where such components were essential for testing plant automation.`,
+      },
+      {
+        title: 'Benefits:',
+        description: `A library of simulation components for water treatment was developed for a software tool, including models for centrifugal pumps, reverse osmosis, depth filters, and sedimentation tanks. This library allows engineers and automation technicians to test, design, and implement new plant structures effectively.`,
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Modeling future water solutions:<br /><span class="text-2xl">Digital twin models for water treatment</span>
+      </h3>
+    </Fragment>
+
+    
+    <Fragment slot="image">
+      <Image src={waterTreatment} alt="Water treatment components"/>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description: `The transformable photocube is an innovative photo album that opens infinitely to display up to twelve square pictures. Custom production technology and a dedicated e-commerce platform with a live demo and product configurator were developed for this unique product, sold globally both through the company's platform and via partnerships with other photo companies.`,
+      },
+      {
+        title: 'Benefits:',
+        description: `The photocube offers a dynamic, interactive way to display memories, making it a perfect gift. Its compact, customizable design, combined with global availability and a user-friendly online shopping experience, ensures it stands out as a unique and thoughtful keepsake.`,
+      },
+    ]}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Infinite memories:<br /><span class="text-2xl">A foldable photocube album</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="image">
+      <Image src={cubeAnimation} alt="Photocube transformation animation" style="width:100%"/>
+      <p style="font-size: 14px">Check the demo of the e-commerce platform <u><a href="https://youtu.be/ZkF7Z1jdVIQ" target="_blank">here</a></u></p>      
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+    <!-- Hero Widget ******************* -->
+
+    <Hero
+    title="And much more..."
+    subtitle="This is just a glimpse, many other groundbreaking projects remain behind the scenes."
+    actions={[{ variant: 'primary', target: '_blank', text: 'Get in touch', href: '/' }]}
+    
+  >
+
+  
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bbg-[#BECFFF] dark:bg-transparent"></div>
+  </Fragment>
+
+</Hero>
+
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Frequently Asked Questions"
+    items={[
+      {
+        title: 'What types of projects do you specialize in?',
+        description:
+          "My specialties include digital twins, advanced simulations, and mechanical engineering. I also have experience in programming, where I've developed software solutions and designed products and graphics to support various technical and business needs.",
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'How do you ensure the success of projects in different industries?',
+        description: "I ensure project success by thoroughly understanding the unique needs of each industry, applying a solution-oriented approach, and leveraging my broad experience across multiple sectors. I prioritize clear communication, robust planning, and continuous collaboration with stakeholders to meet and exceed project goals.",
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'Do you offer consulting services?',
+        description:
+          "Yes, I provide consulting services centered on implementing advanced technologies like digital twins, automation, and other challenges, including Industry 4.0 initiatives. Whether you need assistance with programming, system optimization, or mechanical engineering challenges, I'm here to help your business innovate and grow.",
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'How can someone get in touch with you for a project or collaboration?',
+        description: `You can get in touch with me through the contact form on this website, by sending an email to [your email address], or by connecting with me on LinkedIn. I'm always open to discussing new projects, collaborations, or any inquiries you may have.`,
+        icon: 'tabler:chevrons-right',
+      },
+    ]}
+  >
+
+  </FAQs>
+
+    <!-- ContactUs Widget ****************** -->
+  
+  <ContactUs
+    id="form"
+    title="More questions? Drop me a message!"
+    subtitle="Feel free to connect and leave a message. I'll reply ASAP!"
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: 'Name',
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email',
+      },
+    ]}
+    textarea={{
+      label: 'Message',
+    }}
+    disclaimer={{
+      label:
+        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+    }}
+    description="Our support team typically responds within 24 business hours."
+  />
+
+    <!-- Steps2 Widget ****************** -->
+
+    <Steps2
+    id="contact"
+    title="Reach out via other media"
+    subtitle="Feel free to connect with me through email or social media. I'll be glad to get in touch with you!"
+    callToAction={{
+      text: 'Get in touch',
+      href: '/',
+    }}
+    items={[
+      {
+        title: 'Email',
+        description: 'contact@support.com',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'Phone',
+        description: '+1 (234) 567-890',
+        icon: 'tabler:headset',
+      },
+      {
+        title: 'Follow us',
+        description: '@example',
+        icon: 'tabler:brand-linkedin',
+      },
+    ]}
+  >
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+  </Fragment>
+
+  </Steps2>
+
+
+  <!--
+  BlogLatestPost Widget **************** 
+
+  <BlogLatestPosts
+    id="blog"
+    title="Stay informed with AstroWind's blog"
+    information={`Explore our collection of articles, guides, and tutorials on web development, design trends, and using AstroWind effectively for your projects.`}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </BlogLatestPosts>
+
+-->
+
+
+
+</Layout>
