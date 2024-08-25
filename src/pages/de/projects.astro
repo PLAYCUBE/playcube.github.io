@@ -1,0 +1,175 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Features from '~/components/widgets/Features.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+import { headerData } from '~/navigation';
+import { headerDataDe } from '~/navigation';
+import { Image } from 'astro:assets';
+import waterTreatment from '../../assets/images/water-treatment.png';
+import cubeAnimation from '../../assets/images/cube-animation.gif';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+
+import FAQs from '~/components/widgets/FAQs.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+import { YouTube } from 'astro-embed';
+
+
+/*const metadata = {
+  title: 'SaaS Landing Page',
+};*/
+
+
+const { metadata } = Astro.props;
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="header">
+    <Header
+      {...headerDataDe}
+      actions={[
+        {
+          variant: 'primary',
+          text: 'Kontakt aufnehmen',
+          href: getRelativeLocaleUrl('de', '/projects'),
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+
+   <!-- Content Widget **************** -->
+
+   <Content
+   id="projects"
+   title="Frühere Projekte und weitere Initiativen"
+   subtitle="Entdecken Sie eine Reihe meiner technischen Lösungen, bahnbrechenden Entwicklungen und Beiträge zur digitalen Transformation, einschließlich der Anwendungsfälle des digitalen Zwillings."
+   items={[
+     {
+       title: 'Beschreibung:',
+       description:
+         'Ein Hersteller von Feuerwehrfahrzeugen setzte auf Innovation und benötigte einen AR-Konfigurator für seinen Rettungskorb. Somit wurde eine AR-App entwickelt. Ein CAD-Modell, dass als „Target“ definiert wurde, ermöglichte eine präzise Erkennung und Verfolgung des echten Rettungskorbs, wodurch virtuelle Konfigurationen direkt auf den realen Korb projiziert werden konnten. Auf diese Weise konnte der Hersteller auf Messen verschiedene Konfigurationsoptionen eindrucksvoll präsentieren.',
+     },
+     {
+       title: 'Nutzen:',
+       description: `Der AR-Konfigurator ermöglichte eine präzise Erkennung und Verfolgung des Rettungskorbs, sodass der Hersteller verschiedene Konfigurationen mühelos präsentieren konnte. Dies reduzierte logistische Herausforderungen und Kosten, während gleichzeitig ein äußerst ansprechendes und interaktives Werkzeug für Produktvorführungen geboten wurde, was das Interesse steigerte und die Messepräsentationen verbesserte.`,
+     },
+   ]}
+ >
+   <Fragment slot="content">
+     <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+      Augmented Reality im Einsatz:  <br /><span class="text-2xl">Der Produktkonfigurator, der Realitäten vereint</span>
+     </h3>
+   </Fragment>
+
+   <Fragment slot="image">
+       <YouTube id="Ct9sRCEiUUU" title="Demonstration eines Konfigurators für einen Rettungskorb in Augmented-Reality*"/>
+     <style is:inline>
+       lite-youtube {
+         margin: 0 auto;
+         max-width: 100%;
+       }
+     </style>
+     <p style="font-size: 14px">*Die Namen und Logos der oben genannten Unternehmen sind Marken der jeweiligen Eigentümer. Sie waren Teil früherer Projektarbeit und sollen keine aktuelle Verbindung oder Assoziation mit mir persönlich implizieren.</p>      
+   </Fragment>
+
+   <Fragment slot="bg">
+     <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+   </Fragment>
+ </Content>
+
+ <!-- Content Widget **************** -->
+
+ <Content
+   isReversed
+   isAfterContent={true}
+   items={[
+     {
+       title: 'Beschreibung:',
+       description: `Im Bereich der Simulation, insbesondere im Bereich des digitalen Zwillings, besteht die Herausforderung darin, Phänomene als einzelne Simulationskomponenten exakt zu modellieren. In diesem Bereich fehlen jedoch domänenspezifische Simulationskomponenten. Beispielsweise gab es im Gebiet der Wasseraufbereitung noch wenig Simulationsmodelle, die für die Erprobung der Anlagenautomatisierung unerlässlich waren.`,
+     },
+     {
+       title: 'Nutzen:',
+       description: `Für ein Softwaretool wurde eine Bibliothek von Simulationskomponenten für die Wasseraufbereitung entwickelt, darunter Modelle für Kreiselpumpen, Umkehrosmose, Tiefenfilter und Absetzbecken. Diese Bibliothek ermöglicht es Ingenieuren und Automatisierungstechnikern, neue Anlagenstrukturen effektiv zu testen, zu entwerfen und zu implementieren.`,
+     },
+   ]}
+ >
+   <Fragment slot="content">
+     <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+      Modellierung von Lösungen für die Wasserwirtschaft:<br /><span class="text-2xl">Modelle des digitalen Zwillings für die Wasseraufbereitung</span> 
+     </h3>
+   </Fragment>
+
+   
+   <Fragment slot="image">
+     <Image src={waterTreatment} alt="Water treatment components"/>
+   </Fragment>
+
+   <Fragment slot="bg">
+     <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+   </Fragment>
+ </Content>
+
+ <!-- Content Widget **************** -->
+
+ <Content
+   isAfterContent={true}
+   items={[
+     {
+       title: 'Beschreibung:',
+       description: `Der transformierbare Fotowürfel ist ein innovatives Fotoalbum, das sich endlos öffnen lässt und bis zu zwölf quadratische Bilder enthält. Für dieses einzigartige Produkt wurden eine maßgeschneiderte Produktionstechnologie und eine eigene E-Commerce-Plattform mit einer Live-Demo und einem Produktkonfigurator entwickelt, die sowohl über die Plattform des Unternehmens als auch über Partnerschaften mit anderen Fotounternehmen weltweit verkauft wurden.`,
+     },
+     {
+       title: 'Nutzen:',
+       description: `Der Fotowürfel bietet eine dynamische, interaktive Möglichkeit, Erinnerungen zu verewigen und ist damit das perfekte Geschenk. Sein kompaktes, anpassbares Design, die weltweite Verfügbarkeit und ein benutzerfreundliches Online-Einkaufserlebnis machten ihn zu einem einzigartigen und durchdachten Erinnerungsstück.`,
+     },
+   ]}
+ >
+   <Fragment slot="content">
+     <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+      Unendliche Erinnerungen:<br /><span class="text-2xl">Ein aufklappbarer Fotowürfel</span> 
+     </h3>
+   </Fragment>
+
+   <Fragment slot="image">
+     <Image src={cubeAnimation} alt="Photocube transformation animation" style="width:100%"/>
+     <p style="font-size: 14px">Die Demo der E-Commerce-Plattform finden Sie <u><a href="https://youtu.be/ZkF7Z1jdVIQ" target="_blank">hier</a></u></p>      
+   </Fragment>
+
+   <Fragment slot="bg">
+     <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+   </Fragment>
+ </Content>
+
+   <!-- Hero Widget ******************* -->
+
+   <Hero
+   id="form"
+   title="Und vieles mehr..."
+   subtitle="Dies ist nur ein kleiner Einblick, viele andere bahnbrechende Projekte bleiben hinter den Kulissen."
+   actions={[{ variant: 'primary', text: 'Kontakt aufnehmen', href: getRelativeLocaleUrl('de', '/projects') }]}
+   
+ >
+
+ 
+ <Fragment slot="bg">
+   <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+ </Fragment>
+
+</Hero>
+</Layout>
+  

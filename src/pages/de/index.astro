@@ -1,0 +1,245 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Features from '~/components/widgets/Features.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+import { headerData } from '~/navigation';
+import { headerDataDe } from '~/navigation';
+import { Image } from 'astro:assets';
+import waterTreatment from '../../assets/images/water-treatment.png';
+import cubeAnimation from '../../assets/images/cube-animation.gif';
+
+import FAQs from '~/components/widgets/FAQs.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import { getPermalink } from '~/utils/permalinks';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+
+import { YouTube } from 'astro-embed';
+
+
+/*const metadata = {
+  title: 'SaaS Landing Page',
+};*/
+
+
+const { metadata } = Astro.props;
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="header">
+    <Header
+      {...headerDataDe}
+      actions={[
+        {
+          variant: 'primary',
+          text: 'Kontakt aufnehmen',
+          href: getRelativeLocaleUrl('de', '/contact')
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+  
+
+  <!-- Hero2 Widget ******************* -->
+
+  <Hero2
+    actions={[
+      { variant: 'primary', text: 'Kontakt aufnehmen', href: '#contact' },
+      { text: 'Mehr erfahren', href:getRelativeLocaleUrl('de', '/projects')},
+    ]}
+    image={{
+      src: '~/assets/images/hero-image-2.png',
+      alt: 'AstroWind Hero Image',
+    }}
+  >
+    <Fragment slot="title">
+      Technische Exzellenz mit dem</br><span class="text-accent dark:text-white highlight">digitalen Zwilling</span> 
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        Setzen Sie auf Industrie 4.0, um Effizienz und Präzision in allen ingenieurtechnischen Vorhaben zu steigern.
+    </Fragment>
+    
+  </Hero2>
+
+  
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    id="hero"
+    title="Simon Rochlin"
+    actions={[{ variant: 'primary', text: 'Kontakt aufnehmen', href: getRelativeLocaleUrl('de', '/contact') }]}
+  >
+    <Fragment slot="subtitle">
+      Als Maschinenbauingenieur, Softwareentwickler und Experte im Bereich Digital Twom begleite ich Unternehmen auf ihrem Weg der digitalen Transformation. Mein Fokus liegt darauf, mit digitalen Zwillingen Innovationen voranzutreiben und Prozesse zu optimieren.
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+    </Fragment>
+  </Hero>
+
+   <!-- Content Widget **************** -->
+
+   <Content
+   id="about"
+   columns={1}
+   isReversed
+   items={[
+     {
+       icon: 'tabler:brand-linkedin',
+       callToAction: {
+         target: '_blank',
+         text: 'LinkedIn',
+         href: 'https://www.linkedin.com/in/simon-rochlin-5a391010a/',
+       },
+     },
+   ]}
+   image={{
+     src: '~/assets/images/profile-pic.png',
+     alt: 'Profile Picture',
+     loading: 'eager',
+   }}
+ >
+   <Fragment slot="content">
+     <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Über mich</h2>
+     <p>
+      Willkommen in meiner Welt der Ingenieurskunst und Innovation. Meine Arbeit ist ein Ausdruck meiner Leidenschaft, Konzepte in die Realität umzusetzen, wobei jede Berechnung und jede Codezeile zur Lösung jeglicher Herausforderung beiträgt.
+     </p>
+     <br />
+     <p>
+      Meine Inspiration liegt in der Symbiose aus Technik und Kreativität – sei es die Herausforderung, eine komplexe Konstruktion zu optimieren, die Logik einer Software zu perfektionieren oder die digitale Transformation in der Industrie voranzutreiben.
+     </p>
+     <br />
+     <p>Neugierig auf meine Arbeit? Dann lassen Sie uns gerne ins Gespräch kommen und somit die Zukunft gemeinsam zu gestalten.
+     </p>
+   </Fragment>
+
+   <Fragment slot="bg">
+     <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+   </Fragment>
+ </Content>
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="resume"
+    title="Bildungsweg"
+    items={[
+      {
+        title: `Maschinenbau, M. Sc.<br /> <span class="font-normal">Technische Hochschule Nürnberg Georg Simon Ohm</span> <br /> <span class="text-sm font-normal">2021 - 2024</span>`,
+        icon: 'tabler:school',
+      },
+      {
+        title: `Maschinenbau, B. Eng.<br /> <span class="font-normal">Hochschule Karlsruhe - Technik und Wirtschaft</span> <br /> <span class="text-sm font-normal">2016 - 2020</span>`,
+        icon: 'tabler:school',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Features3 Widget ************** -->
+
+  <Features3
+    id="skills"
+    title="Skills"
+    subtitle="Entdecken Sie mein Know-how, das hinter der Entwicklung wirkungsvoller und fortschrittlicher Lösungen steckt."
+    columns={3}
+    defaultIcon="tabler:point-filled"
+    items={[
+      {
+        title: 'Entwicklung von digitalen Zwillingen',
+        description: 'Spezialisiert auf die Entwicklung digitaler Zwillinge für Prozesssimulation, Automatisierung und virtuelle Inbetriebnahme.',
+      },
+      {
+        title: 'Konstruieren (CAD)',
+        description: 'Erfahrung in 3D-Modellierung und parametrischem Design, mit umfangreicher Kompetenz in der Entwicklung von Konstruktionslösungen',
+      },
+      {
+        title: 'Programmieren',
+        description: 'Kenntnisse in verschiedenen Programmiersprachen mit Schwerpunkt auf der Erstellung von nahtlosen Benutzererlebnissen und robusten Full-Stack-Anwendungen.',
+      },
+      {
+        title: 'Entwicklung von AR/VR-Anwendungen',
+        description: 'Experte für die Entwicklung immersiver Augmented- und Virtual-Reality-Anwendungen für verschiedense Use-Cases.',
+      },
+      {
+        title: 'Automatisierung und Simulation',
+        description: 'Fortgeschritten in der Automatisierung von Prozessen und der Nutzung digitaler Zwillinge zur Verbesserung der Effizienz von Arbeitsabläufen und der virtuellen Inbetriebnahme.',
+      },
+      {
+        title: 'Entwicklung von Produktkonfiguratoren',
+        description: 'Experte für die Entwicklung interaktiver, benutzerfreundlicher Produktkonfiguratoren, die die Kundenansprache und Personalisierung optimieren.',
+      }
+    ]}
+  />
+
+     <!-- Steps2 Widget ****************** -->
+
+     <Steps2
+     id="contact"
+     title="Nehmen Sie Kontakt auf"
+     subtitle="Sie können mich gerne per E-Mail oder über soziale Medien kontaktieren. Ich freue mich darauf, mit Ihnen in den Austausch zu treten!"
+     callToAction={{
+       text: 'Kontakt aufnehmen',
+       href: getRelativeLocaleUrl('de', '/contact'),
+     }}
+     items={[
+       {
+         title: 'Email',
+         description: 'contact@support.com',
+         icon: 'tabler:mail',
+       },
+       {
+         title: 'Phone',
+         description: '+1 (234) 567-890',
+         icon: 'tabler:headset',
+       },
+       {
+         title: 'Follow us',
+         description: '@example',
+         icon: 'tabler:brand-linkedin',
+       },
+     ]}
+   >
+   <Fragment slot="bg">
+     <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+   </Fragment>
+ 
+   </Steps2>
+
+
+
+
+  <!--
+  BlogLatestPost Widget **************** 
+
+  <BlogLatestPosts
+    id="blog"
+    title="Stay informed with AstroWind's blog"
+    information={`Explore our collection of articles, guides, and tutorials on web development, design trends, and using AstroWind effectively for your projects.`}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </BlogLatestPosts>
+
+-->
+
+
+
+</Layout>
