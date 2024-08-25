@@ -1,4 +1,6 @@
 import { getPermalink, getHomePermalink, getBlogPermalink, getAsset } from './utils/permalinks';
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
 
 export const headerData = {
   links: [
@@ -15,8 +17,47 @@ export const headerData = {
       href: getPermalink('/contact'),
     },
     {
-      text: 'Blog',
-      href: getBlogPermalink(),
+      text: 'Language',
+      links: [
+        {
+          text: 'German',
+          href: getRelativeLocaleUrl('de')
+        },
+        {
+          text: 'English',
+          href: '/'
+        },
+      ],
+    },
+  ],
+};
+
+export const headerDataDe = {
+  links: [
+    {
+      text: 'Home',
+      href: getRelativeLocaleUrl('de'),
+    },
+    {
+      text: 'Projekte',
+      href: getRelativeLocaleUrl('de', '/projects'),
+    },
+    {
+      text: 'Kontakt',
+      href: getRelativeLocaleUrl('de', '/contact'),
+    },
+    {
+      text: 'Sprachen',
+      links: [
+        {
+          text: 'Deutsch',
+          href: getRelativeLocaleUrl('de')
+        },
+        {
+          text: 'Englisch',
+          href: '/'
+        },
+      ],
     },
   ],
 };

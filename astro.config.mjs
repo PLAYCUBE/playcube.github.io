@@ -12,6 +12,8 @@ import compress from 'astro-compress';
 
 import astrowind from './vendor/integration';
 
+
+
 import {
   readingTimeRemarkPlugin,
   responsiveTablesRehypePlugin,
@@ -26,8 +28,7 @@ const whenExternalScripts = (items = []) =>
 
 export default defineConfig({
   output: 'static',
-  site: 'https://playcube.github.io',
-  base: 'my-repo',
+
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -92,4 +93,13 @@ export default defineConfig({
       },
     },
   },
+
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "de"],
+    routing: {
+      prefixDefaultLocale: false
+  }
+  }
+
 });
