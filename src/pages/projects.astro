@@ -1,0 +1,172 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Header from '~/components/widgets/Header.astro';
+import Footer from '~/components/widgets/Footer.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Hero2 from '~/components/widgets/Hero2.astro';
+import Features from '~/components/widgets/Features.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+
+import { headerData } from '~/navigation';
+import { Image } from 'astro:assets';
+import waterTreatment from '../assets/images/water-treatment.png';
+import cubeAnimation from '../assets/images/cube-animation.gif';
+
+import FAQs from '~/components/widgets/FAQs.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+import { YouTube } from 'astro-embed';
+
+
+/*const metadata = {
+  title: 'SaaS Landing Page',
+};*/
+
+
+const { metadata } = Astro.props;
+---
+
+<Layout metadata={metadata}>
+  <Fragment slot="header">
+    <Header
+      {...headerData}
+      actions={[
+        {
+          variant: 'primary',
+          text: 'Get in touch',
+          href: getPermalink('/contact#form'),
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+
+   <!-- Content Widget **************** -->
+
+   <Content
+   id="projects"
+   title="Past projects and other initiatives"
+   subtitle="Discover a range of my engineering solutions, cutting-edge developments, and contributions to digital transformation, including digital twin use cases."
+   items={[
+     {
+       title: 'Description:',
+       description:
+         'A fire truck manufacturer aimed to create an AR configurator for their safety basket. The tool used a 3D model "target" for precise recognition and tracking, overlaying virtual configurations onto the real basket. This allowed the manufacturer to showcase various configuration options at trade shows without transporting additional components.',
+     },
+     {
+       title: 'Benefits:',
+       description: `The AR configurator provided accurate recognition and tracking, allowing the manufacturer to showcase multiple safety basket configurations with ease. This reduced logistical challenges and costs while offering a highly engaging and interactive tool for product demonstrations, boosting interest and enhancing trade show presentations.`,
+     },
+   ]}
+ >
+   <Fragment slot="content">
+     <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+       Blending realities: <br /><span class="text-2xl">A product configurator using augmented reality</span>
+     </h3>
+   </Fragment>
+
+   <Fragment slot="image">
+       <YouTube id="Ct9sRCEiUUU" title="Demonstration of a fire truck safety basket configurator in augmented reality*"/>
+     <style is:inline>
+       lite-youtube {
+         margin: 0 auto;
+         max-width: 100%;
+       }
+     </style>
+     <p style="font-size: 14px">*The names and logos of the companies mentioned above are trademarks of their respective owners. These were part of past project work and are not intended to imply any current connection or association with me personally.</p>      
+   </Fragment>
+
+   <Fragment slot="bg">
+     <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+   </Fragment>
+ </Content>
+
+ <!-- Content Widget **************** -->
+
+ <Content
+   isReversed
+   isAfterContent={true}
+   items={[
+     {
+       title: 'Description:',
+       description: `In the field of simulation, particularly with Digital Twins, the challenge lies in accurately modeling phenomena as individual simulation components. This is especially difficult due to the relatively recent development of this area, leading to a lack of domain-specific simulation components that must first be created. This was the case in water treatment, where such components were essential for testing plant automation.`,
+     },
+     {
+       title: 'Benefits:',
+       description: `A library of simulation components for water treatment was developed for a software tool, including models for centrifugal pumps, reverse osmosis, depth filters, and sedimentation tanks. This library allows engineers and automation technicians to test, design, and implement new plant structures effectively.`,
+     },
+   ]}
+ >
+   <Fragment slot="content">
+     <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+       Modeling future water solutions:<br /><span class="text-2xl">Digital twin models for water treatment</span>
+     </h3>
+   </Fragment>
+
+   
+   <Fragment slot="image">
+     <Image src={waterTreatment} alt="Water treatment components"/>
+   </Fragment>
+
+   <Fragment slot="bg">
+     <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+   </Fragment>
+ </Content>
+
+ <!-- Content Widget **************** -->
+
+ <Content
+   isAfterContent={true}
+   items={[
+     {
+       title: 'Description:',
+       description: `The transformable photocube is an innovative photo album that opens infinitely to display up to twelve square pictures. Custom production technology and a dedicated e-commerce platform with a live demo and product configurator were developed for this unique product, sold globally both through the company's platform and via partnerships with other photo companies.`,
+     },
+     {
+       title: 'Benefits:',
+       description: `The photocube offers a dynamic, interactive way to display memories, making it a perfect gift. Its compact, customizable design, combined with global availability and a user-friendly online shopping experience, ensures it stands out as a unique and thoughtful keepsake.`,
+     },
+   ]}
+ >
+   <Fragment slot="content">
+     <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+       Infinite memories:<br /><span class="text-2xl">A foldable photocube album</span>
+     </h3>
+   </Fragment>
+
+   <Fragment slot="image">
+     <Image src={cubeAnimation} alt="Photocube transformation animation" style="width:100%"/>
+     <p style="font-size: 14px">Check the demo of the e-commerce platform <u><a href="https://youtu.be/ZkF7Z1jdVIQ" target="_blank">here</a></u></p>      
+   </Fragment>
+
+   <Fragment slot="bg">
+     <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+   </Fragment>
+ </Content>
+
+   <!-- Hero Widget ******************* -->
+
+   <Hero
+   id="form"
+   title="And much more..."
+   subtitle="This is just a glimpse, many other groundbreaking projects remain behind the scenes."
+   actions={[{ variant: 'primary', text: 'Get in touch', href: getPermalink('/contact#form') }]}
+   
+ >
+
+ 
+ <Fragment slot="bg">
+   <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+ </Fragment>
+
+</Hero>
+</Layout>
+  

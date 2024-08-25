@@ -41,7 +41,7 @@ const { metadata } = Astro.props;
         {
           variant: 'primary',
           text: 'Get in touch',
-          href: '#form',
+          href: getPermalink('/contact#form')
         },
       ]}
       isSticky
@@ -55,7 +55,7 @@ const { metadata } = Astro.props;
   <Hero2
     actions={[
       { variant: 'primary', text: 'Get in touch', href: '#contact' },
-      { text: 'Learn more', href: '#projects' },
+      { text: 'Learn more', href: getPermalink('/projects')},
     ]}
     image={{
       src: '~/assets/images/hero-image-2.png',
@@ -189,221 +189,41 @@ const { metadata } = Astro.props;
     ]}
   />
 
+     <!-- Steps2 Widget ****************** -->
+
+     <Steps2
+     id="contact"
+     title="Reach out via other media"
+     subtitle="Feel free to connect with me through email or social media. I'll be glad to get in touch with you!"
+     callToAction={{
+       text: 'Get in touch',
+       href: getPermalink('/contact#form'),
+     }}
+     items={[
+       {
+         title: 'Email',
+         description: 'contact@support.com',
+         icon: 'tabler:mail',
+       },
+       {
+         title: 'Phone',
+         description: '+1 (234) 567-890',
+         icon: 'tabler:headset',
+       },
+       {
+         title: 'Follow us',
+         description: '@example',
+         icon: 'tabler:brand-linkedin',
+       },
+     ]}
+   >
+   <Fragment slot="bg">
+     <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+   </Fragment>
+ 
+   </Steps2>
 
 
-  <!-- Content Widget **************** -->
-
-  <Content
-    id="projects"
-    title="Past projects and other initiatives"
-    subtitle="Discover a range of my engineering solutions, cutting-edge developments, and contributions to digital transformation, including digital twin use cases."
-    items={[
-      {
-        title: 'Description:',
-        description:
-          'A fire truck manufacturer aimed to create an AR configurator for their safety basket. The tool used a 3D model "target" for precise recognition and tracking, overlaying virtual configurations onto the real basket. This allowed the manufacturer to showcase various configuration options at trade shows without transporting additional components.',
-      },
-      {
-        title: 'Benefits:',
-        description: `The AR configurator provided accurate recognition and tracking, allowing the manufacturer to showcase multiple safety basket configurations with ease. This reduced logistical challenges and costs while offering a highly engaging and interactive tool for product demonstrations, boosting interest and enhancing trade show presentations.`,
-      },
-    ]}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Blending realities: <br /><span class="text-2xl">A product configurator using augmented reality</span>
-      </h3>
-    </Fragment>
-
-    <Fragment slot="image">
-        <YouTube id="Ct9sRCEiUUU" title="Demonstration of a fire truck safety basket configurator in augmented reality*"/>
-      <style is:inline>
-        lite-youtube {
-          margin: 0 auto;
-          max-width: 100%;
-        }
-      </style>
-      <p style="font-size: 14px">*The names and logos of the companies mentioned above are trademarks of their respective owners. These were part of past project work and are not intended to imply any current connection or association with me personally.</p>      
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent={true}
-    items={[
-      {
-        title: 'Description:',
-        description: `In the field of simulation, particularly with Digital Twins, the challenge lies in accurately modeling phenomena as individual simulation components. This is especially difficult due to the relatively recent development of this area, leading to a lack of domain-specific simulation components that must first be created. This was the case in water treatment, where such components were essential for testing plant automation.`,
-      },
-      {
-        title: 'Benefits:',
-        description: `A library of simulation components for water treatment was developed for a software tool, including models for centrifugal pumps, reverse osmosis, depth filters, and sedimentation tanks. This library allows engineers and automation technicians to test, design, and implement new plant structures effectively.`,
-      },
-    ]}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Modeling future water solutions:<br /><span class="text-2xl">Digital twin models for water treatment</span>
-      </h3>
-    </Fragment>
-
-    
-    <Fragment slot="image">
-      <Image src={waterTreatment} alt="Water treatment components"/>
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent={true}
-    items={[
-      {
-        title: 'Description:',
-        description: `The transformable photocube is an innovative photo album that opens infinitely to display up to twelve square pictures. Custom production technology and a dedicated e-commerce platform with a live demo and product configurator were developed for this unique product, sold globally both through the company's platform and via partnerships with other photo companies.`,
-      },
-      {
-        title: 'Benefits:',
-        description: `The photocube offers a dynamic, interactive way to display memories, making it a perfect gift. Its compact, customizable design, combined with global availability and a user-friendly online shopping experience, ensures it stands out as a unique and thoughtful keepsake.`,
-      },
-    ]}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Infinite memories:<br /><span class="text-2xl">A foldable photocube album</span>
-      </h3>
-    </Fragment>
-
-    <Fragment slot="image">
-      <Image src={cubeAnimation} alt="Photocube transformation animation" style="width:100%"/>
-      <p style="font-size: 14px">Check the demo of the e-commerce platform <u><a href="https://youtu.be/ZkF7Z1jdVIQ" target="_blank">here</a></u></p>      
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-    <!-- Hero Widget ******************* -->
-
-    <Hero
-    title="And much more..."
-    subtitle="This is just a glimpse, many other groundbreaking projects remain behind the scenes."
-    actions={[{ variant: 'primary', target: '_blank', text: 'Get in touch', href: '/' }]}
-    
-  >
-
-  
-  <Fragment slot="bg">
-    <div class="absolute inset-0 bbg-[#BECFFF] dark:bg-transparent"></div>
-  </Fragment>
-
-</Hero>
-
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    items={[
-      {
-        title: 'What types of projects do you specialize in?',
-        description:
-          "My specialties include digital twins, advanced simulations, and mechanical engineering. I also have experience in programming, where I've developed software solutions and designed products and graphics to support various technical and business needs.",
-        icon: 'tabler:chevrons-right',
-      },
-      {
-        title: 'How do you ensure the success of projects in different industries?',
-        description: "I ensure project success by thoroughly understanding the unique needs of each industry, applying a solution-oriented approach, and leveraging my broad experience across multiple sectors. I prioritize clear communication, robust planning, and continuous collaboration with stakeholders to meet and exceed project goals.",
-        icon: 'tabler:chevrons-right',
-      },
-      {
-        title: 'Do you offer consulting services?',
-        description:
-          "Yes, I provide consulting services centered on implementing advanced technologies like digital twins, automation, and other challenges, including Industry 4.0 initiatives. Whether you need assistance with programming, system optimization, or mechanical engineering challenges, I'm here to help your business innovate and grow.",
-        icon: 'tabler:chevrons-right',
-      },
-      {
-        title: 'How can someone get in touch with you for a project or collaboration?',
-        description: `You can get in touch with me through the contact form on this website, by sending an email to [your email address], or by connecting with me on LinkedIn. I'm always open to discussing new projects, collaborations, or any inquiries you may have.`,
-        icon: 'tabler:chevrons-right',
-      },
-    ]}
-  >
-
-  </FAQs>
-
-    <!-- ContactUs Widget ****************** -->
-  
-  <ContactUs
-    id="form"
-    title="More questions? Drop me a message!"
-    subtitle="Feel free to connect and leave a message. I'll reply ASAP!"
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
-    ]}
-    textarea={{
-      label: 'Message',
-    }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="Our support team typically responds within 24 business hours."
-  />
-
-    <!-- Steps2 Widget ****************** -->
-
-    <Steps2
-    id="contact"
-    title="Reach out via other media"
-    subtitle="Feel free to connect with me through email or social media. I'll be glad to get in touch with you!"
-    callToAction={{
-      text: 'Get in touch',
-      href: '/',
-    }}
-    items={[
-      {
-        title: 'Email',
-        description: 'contact@support.com',
-        icon: 'tabler:mail',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Follow us',
-        description: '@example',
-        icon: 'tabler:brand-linkedin',
-      },
-    ]}
-  >
-  <Fragment slot="bg">
-    <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
-  </Fragment>
-
-  </Steps2>
 
 
   <!--

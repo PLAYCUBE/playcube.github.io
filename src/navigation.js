@@ -7,6 +7,14 @@ export const headerData = {
       href: getHomePermalink(),
     },
     {
+      text: 'Projects',
+      href: getPermalink('/projects'),
+    },
+    {
+      text: 'Contact',
+      href: getPermalink('/contact'),
+    },
+    {
       text: 'Blog',
       href: getBlogPermalink(),
     },

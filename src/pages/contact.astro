@@ -1,23 +1,40 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
 
-const metadata = {
-  title: 'Contact',
-};
+import { headerData } from '~/navigation';
+
+
+
+const { metadata } = Astro.props;
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
-
-  <HeroText tagline="Contact" title="Let's Connect!" />
-
-  <ContactUs
+  <Fragment slot="header">
+    <Header
+      {...headerData}
+      actions={[
+        {
+          variant: 'primary',
+          text: 'Get in touch',
+          href: '/',
+        },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+    <!-- ContactUs Widget ****************** -->
+  
+    <ContactUs
     id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+    title="More questions? Drop me a message!"
+    subtitle="Feel free to connect and leave a message. I'll reply ASAP!"
     inputs={[
       {
         type: 'text',
@@ -40,40 +57,41 @@ const metadata = {
     description="Our support team typically responds within 24 business hours."
   />
 
-  <!-- Features2 Widget ************** -->
+    <!-- FAQs Widget ******************* -->
 
-  <Features2
-    title="We are here to help!"
+    <FAQs
+    title="Frequently Asked Questions"
     items={[
       {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
-      },
-      {
-        title: 'Contact sales',
+        title: 'What types of projects do you specialize in?',
         description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
+          "My specialties include digital twins, advanced simulations, and mechanical engineering. I also have experience in programming, where I've developed software solutions and designed products and graphics to support various technical and business needs.",
+        icon: 'tabler:chevrons-right',
       },
       {
-        title: 'Technical support',
+        title: 'How do you ensure the success of projects in different industries?',
+        description: "I ensure project success by thoroughly understanding the unique needs of each industry, applying a solution-oriented approach, and leveraging my broad experience across multiple sectors. I prioritize clear communication, robust planning, and continuous collaboration with stakeholders to meet and exceed project goals.",
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'Do you offer consulting services?',
         description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
+          "Yes, I provide consulting services centered on implementing advanced technologies like digital twins, automation, and other challenges, including Industry 4.0 initiatives. Whether you need assistance with programming, system optimization, or mechanical engineering challenges, I'm here to help your business innovate and grow.",
+        icon: 'tabler:chevrons-right',
       },
       {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
-      },
-      {
-        title: 'Email',
-        description: 'contact@support.com',
-        icon: 'tabler:mail',
-      },
-      {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
+        title: 'How can someone get in touch with you for a project or collaboration?',
+        description: `You can get in touch with me through the contact form on this website, by sending an email to [your email address], or by connecting with me on LinkedIn. I'm always open to discussing new projects, collaborations, or any inquiries you may have.`,
+        icon: 'tabler:chevrons-right',
       },
     ]}
-  />
+  >
+
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+  </Fragment>
+
+    </FAQs>
+
+   
 </Layout>
