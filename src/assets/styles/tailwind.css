@@ -90,3 +90,9 @@
 .dd *:first-child {
   margin-top: 0;
 }
+
+/* Email obfuscation */
+
+span.email b {
+  display: none;
+}

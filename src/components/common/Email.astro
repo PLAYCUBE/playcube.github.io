@@ -1,0 +1,17 @@
+---
+// Set defaults and get args
+import siteParams from '../../params';
+const defaultEmail = siteParams.defaultEmail;
+const { address = defaultEmail } = Astro.props;
+
+// Get parts
+const addressParts = address.split('@');
+const userName = addressParts[0];
+const rootDomain = addressParts[1];
+const rootDomainParts = rootDomain.split('.');
+const domainName = rootDomainParts[0];
+const topLevelDomain = rootDomainParts[1];
+---
+
+<!-- Render -->
+<span class="email">{userName}@{domainName}<b>.{domainName}</b>.{topLevelDomain}</span>

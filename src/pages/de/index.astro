@@ -28,6 +28,22 @@ import { getRelativeLocaleUrl } from 'astro:i18n';
 import { YouTube } from 'astro-embed';
 
 
+// Set defaults and get args
+import siteParams from '../../params';
+const defaultEmail = siteParams.defaultEmail;
+const { address = defaultEmail } = Astro.props;
+
+// Get parts
+const addressParts = address.split('@');
+const userName = 'simon.dev';
+const rootDomain = addressParts[1];
+const rootDomainParts = rootDomain.split('.');
+const domainName = 'gmail';
+const topLevelDomain = 'com';
+
+
+
+
 /*const metadata = {
   title: 'SaaS Landing Page',
 };*/
@@ -44,7 +60,7 @@ const { metadata } = Astro.props;
         {
           variant: 'primary',
           text: 'Kontakt aufnehmen',
-          href: getRelativeLocaleUrl('de', '/contact')
+          href: 'de#contact'
         },
       ]}
       isSticky
@@ -82,7 +98,7 @@ const { metadata } = Astro.props;
   <Hero
     id="hero"
     title="Simon Rochlin"
-    actions={[{ variant: 'primary', text: 'Kontakt aufnehmen', href: getRelativeLocaleUrl('de', '/contact') }]}
+    actions={[{ variant: 'primary', text: 'Kontakt aufnehmen', href:'de#contact'}]}
   >
     <Fragment slot="subtitle">
       Als Maschinenbauingenieur, Softwareentwickler und Experte im Bereich Digital Twom begleite ich Unternehmen auf ihrem Weg der digitalen Transformation. Mein Fokus liegt darauf, mit digitalen Zwillingen Innovationen voranzutreiben und Prozesse zu optimieren.
@@ -196,22 +212,22 @@ const { metadata } = Astro.props;
      subtitle="Sie können mich gerne per E-Mail oder über soziale Medien kontaktieren. Ich freue mich darauf, mit Ihnen in den Austausch zu treten!"
      callToAction={{
        text: 'Kontakt aufnehmen',
-       href: getRelativeLocaleUrl('de', '/contact'),
+       href:"mailto:%73%69%6d%6f%6e%2e%64%65%76%40%67%6d%61%69%6c%2e%63%6f%6d",
      }}
      items={[
        {
          title: 'Email',
-         description: 'contact@support.com',
+         description: '<a href="mailto:%73%69%6d%6f%6e%2e%64%65%76%40%67%6d%61%69%6c%2e%63%6f%6d"><span class="email">'+userName+'@'+domainName+'<b>.'+domainName+'</b>.'+topLevelDomain+'</span></a>',
          icon: 'tabler:mail',
        },
        {
-         title: 'Phone',
-         description: '+1 (234) 567-890',
+         title: 'Telefon',
+         description: '+49 176 301 736 63',
          icon: 'tabler:headset',
        },
        {
-         title: 'Follow us',
-         description: '@example',
+         title: 'Social Media',
+         description: '<a href="https://www.linkedin.com/in/simon-rochlin-5a391010a/">Simon Rochlin</a>',
          icon: 'tabler:brand-linkedin',
        },
      ]}

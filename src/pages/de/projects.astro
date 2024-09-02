@@ -44,7 +44,7 @@ const { metadata } = Astro.props;
         {
           variant: 'primary',
           text: 'Kontakt aufnehmen',
-          href: getRelativeLocaleUrl('de', '/projects'),
+          href: getPermalink('de#contact'),
         },
       ]}
       isSticky
@@ -155,13 +155,47 @@ const { metadata } = Astro.props;
    </Fragment>
  </Content>
 
+ <FAQs
+    title="Häufig gestellte Fragen"
+    items={[
+      {
+        title: 'Auf welche Arten von Projekten sind Sie spezialisiert?',
+        description:
+          "Zu meinen Spezialgebieten gehören digitale Zwillinge, fortgeschrittene Simulationen und Kontruktionen im CAD. Ich habe auch Erfahrung in der Entwicklung von Softwarelösungen und der Gestaltung von Produkten und Grafiken zur Unterstützung verschiedener technischer und geschäftlicher Anforderungen.",
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'Wie stellen Sie den Erfolg von Projekten in verschiedenen Industrien sicher?',
+        description: "Ich stelle den Projekterfolg sicher, indem ich die besonderen Anforderungen jeder Branche genau verstehe, einen lösungsorientierten Ansatz verfolge und meine umfassende Erfahrung in verschiedenen Branchen einsetze. Ich lege Wert auf klare Kommunikation, solide Planung und kontinuierliche Zusammenarbeit mit den Beteiligten, um die Projektziele zu verwirklichen.",
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'Bieten Sie Beratungsdienstleistungen an?',
+        description:
+          "Ja, ich biete Beratungsdienste an, die sich auf die Implementierung fortschrittlicher Technologien wie digitale Zwillinge, Automatisierung und andere Herausforderungen, einschließlich Industrie 4.0-Initiativen, konzentrieren. Ganz unabhängig davon, ob Sie Unterstützung bei der Programmierung, der Systemoptimierung oder bei maschinenbaulichen Herausforderungen benötigen, ich bin da, um Ihr Unternehmen bei Innovation und Wachstum zu unterstützen.",
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'Wie kann man sich mit Ihnen für ein Projekt oder eine Zusammenarbeit in Verbindung setzen?',
+        description: `Sie können mich über das Kontaktformular auf dieser Website kontaktieren, eine E-Mail an [Ihre E-Mail-Adresse] senden oder sich mit mir auf LinkedIn verbinden. Ich bin immer offen für Gespräche über neue Projekte, Kooperationen oder Anfragen, die Sie haben`,
+        icon: 'tabler:chevrons-right',
+      },
+    ]}
+  >
+
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+  </Fragment>
+
+    </FAQs>
+
    <!-- Hero Widget ******************* -->
 
    <Hero
    id="form"
    title="Und vieles mehr..."
    subtitle="Dies ist nur ein kleiner Einblick, viele andere bahnbrechende Projekte bleiben hinter den Kulissen."
-   actions={[{ variant: 'primary', text: 'Kontakt aufnehmen', href: getRelativeLocaleUrl('de', '/projects') }]}
+   actions={[{ variant: 'primary', text: 'Kontakt aufnehmen', href: getPermalink('de#contact'), }]}
    
  >
 

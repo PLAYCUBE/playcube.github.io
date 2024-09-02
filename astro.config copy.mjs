@@ -9,18 +9,14 @@ import icon from 'astro-icon';
 import compress from 'astro-compress';
 import astrowind from './vendor/integration';
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter.mjs';
-import node from "@astrojs/node";
-import preact from "@astrojs/preact";
-import netlify from "@astrojs/netlify";
+import jopSoftwarecookieconsent from "@jop-software/astro-cookieconsent";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const hasExternalScripts = false;
 const whenExternalScripts = (items = []) => hasExternalScripts ? Array.isArray(items) ? items.map(item => item()) : [items()] : [];
 
-
 // https://astro.build/config
 export default defineConfig({
-  //output: 'static,'
-  output: 'hybrid',
+  output: 'static',
   integrations: [tailwind({
     applyBaseStyles: false
   }), sitemap(), mdx(), icon({
@@ -45,7 +41,7 @@ export default defineConfig({
     Logger: 1
   }), astrowind({
     config: './src/config.yaml'
-  }), preact()],
+  }), jopSoftwarecookieconsent()],
   image: {
     service: passthroughImageService(),
     domains: ['cdn.pixabay.com']
@@ -67,6 +63,5 @@ export default defineConfig({
     routing: {
       prefixDefaultLocale: false
     }
-  },
-  adapter: netlify()
+  }
 });

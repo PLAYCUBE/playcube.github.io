@@ -25,15 +25,32 @@ import { getPermalink } from '~/utils/permalinks';
 import { YouTube } from 'astro-embed';
 
 
+// Set defaults and get args
+import siteParams from '../params';
+const defaultEmail = siteParams.defaultEmail;
+const { address = defaultEmail } = Astro.props;
+
+// Get parts
+const addressParts = address.split('@');
+const userName = 'simon.dev';
+const rootDomain = addressParts[1];
+const rootDomainParts = rootDomain.split('.');
+const domainName = 'gmail';
+const topLevelDomain = 'com';
+
+
+
+
 /*const metadata = {
   title: 'SaaS Landing Page',
 };*/
-
 
 const { metadata } = Astro.props;
 ---
 
 <Layout metadata={metadata}>
+
+
   <Fragment slot="header">
     <Header
       {...headerData}
@@ -41,7 +58,7 @@ const { metadata } = Astro.props;
         {
           variant: 'primary',
           text: 'Get in touch',
-          href: getPermalink('/contact#form')
+          href: '/#contact',
         },
       ]}
       isSticky
@@ -80,7 +97,7 @@ const { metadata } = Astro.props;
   <Hero
     id="hero"
     title="Simon Rochlin"
-    actions={[{ variant: 'primary', text: 'Get in touch', href: getPermalink('/contact#form') }]}
+    actions={[{ variant: 'primary', text: 'Get in touch', href: '/#contact' }]}
   >
     <Fragment slot="subtitle">
       As a mechanical engineer, software developer, and digital twin specialist, I bring a wealth of experience from both corporate and start-up roles.
@@ -189,6 +206,7 @@ const { metadata } = Astro.props;
     ]}
   />
 
+
      <!-- Steps2 Widget ****************** -->
 
      <Steps2
@@ -197,32 +215,32 @@ const { metadata } = Astro.props;
      subtitle="Feel free to connect with me through email or social media. I'll be glad to get in touch with you!"
      callToAction={{
        text: 'Get in touch',
-       href: getPermalink('/contact#form'),
+       href: "mailto:%73%69%6d%6f%6e%2e%64%65%76%40%67%6d%61%69%6c%2e%63%6f%6d",
      }}
      items={[
        {
          title: 'Email',
-         description: 'contact@support.com',
+         description: '<a href="mailto:%73%69%6d%6f%6e%2e%64%65%76%40%67%6d%61%69%6c%2e%63%6f%6d"><span class="email">'+userName+'@'+domainName+'<b>.'+domainName+'</b>.'+topLevelDomain+'</span></a>',
          icon: 'tabler:mail',
        },
        {
          title: 'Phone',
-         description: '+1 (234) 567-890',
+         description: '+49 176 301 736 63',
          icon: 'tabler:headset',
        },
        {
-         title: 'Follow us',
-         description: '@example',
+         title: 'Follow me',
+         description: '<a href="https://www.linkedin.com/in/simon-rochlin-5a391010a/">Simon Rochlin</a>',
          icon: 'tabler:brand-linkedin',
        },
      ]}
    >
+
    <Fragment slot="bg">
      <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
    </Fragment>
  
    </Steps2>
-
 
 
 

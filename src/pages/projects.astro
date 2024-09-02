@@ -41,7 +41,7 @@ const { metadata } = Astro.props;
         {
           variant: 'primary',
           text: 'Get in touch',
-          href: getPermalink('/contact#form'),
+          href: '/#contact',
         },
       ]}
       isSticky
@@ -152,13 +152,48 @@ const { metadata } = Astro.props;
    </Fragment>
  </Content>
 
+ <FAQs
+    title="Frequently Asked Questions"
+    items={[
+      {
+        title: 'What types of projects do you specialize in?',
+        description:
+          "My specialties include digital twins, advanced simulations, and mechanical engineering. I also have experience in programming, where I've developed software solutions and designed products and graphics to support various technical and business needs.",
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'How do you ensure the success of projects in different industries?',
+        description: "I ensure project success by thoroughly understanding the unique needs of each industry, applying a solution-oriented approach, and leveraging my broad experience across multiple sectors. I prioritize clear communication, robust planning, and continuous collaboration with stakeholders to meet and exceed project goals.",
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'Do you offer consulting services?',
+        description:
+          "Yes, I provide consulting services centered on implementing advanced technologies like digital twins, automation, and other challenges, including Industry 4.0 initiatives. Whether you need assistance with programming, system optimization, or mechanical engineering challenges, I'm here to help your business innovate and grow.",
+        icon: 'tabler:chevrons-right',
+      },
+      {
+        title: 'How can someone get in touch with you for a project or collaboration?',
+        description: `You can get in touch with me through the contact form on this website, by sending an email to [your email address], or by connecting with me on LinkedIn. I'm always open to discussing new projects, collaborations, or any inquiries you may have.`,
+        icon: 'tabler:chevrons-right',
+      },
+    ]}
+  >
+
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-[#BECFFF] dark:bg-transparent"></div>
+  </Fragment>
+
+    </FAQs>
+
+
    <!-- Hero Widget ******************* -->
 
    <Hero
    id="form"
    title="And much more..."
    subtitle="This is just a glimpse, many other groundbreaking projects remain behind the scenes."
-   actions={[{ variant: 'primary', text: 'Get in touch', href: getPermalink('/contact#form') }]}
+   actions={[{ variant: 'primary', text: 'Get in touch', href:'/#contact' }]}
    
  >
 
@@ -168,5 +203,8 @@ const { metadata } = Astro.props;
  </Fragment>
 
 </Hero>
+
+
+
 </Layout>
   

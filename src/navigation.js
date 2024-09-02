@@ -12,10 +12,10 @@ export const headerData = {
       text: 'Projects',
       href: getPermalink('/projects'),
     },
-    {
+    /*{
       text: 'Contact',
       href: getPermalink('/contact'),
-    },
+    },*/
     {
       text: 'Language',
       links: [
@@ -42,10 +42,10 @@ export const headerDataDe = {
       text: 'Projekte',
       href: getRelativeLocaleUrl('de', '/projects'),
     },
-    {
+    /*{
       text: 'Kontakt',
       href: getRelativeLocaleUrl('de', '/contact'),
-    },
+    },*/
     {
       text: 'Sprachen',
       links: [
@@ -110,8 +110,7 @@ export const footerData = {
     },
   ],
   secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+    { text: 'Impressum', href: getPermalink('/impressum')},
   ],
   socialLinks: [
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
