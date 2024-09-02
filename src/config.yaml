@@ -1,6 +1,6 @@
 site:
   name: Simon Rochlin
-  site: 'https://playcube.github.io'
+  site: 'https://rochlin.github.io'
   base: '/'
   trailingSlash: false
 
